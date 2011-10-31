@@ -9,10 +9,10 @@ module Middleman
           app.set :favicon_input_dir, app.views
           app.set :favicon_output_dir, app.build_dir
           app.set :favicon_base_image, "favicon_base.png"
-          app.set :favicon_versions, FaviconMaker::Generator::ICON_VERSIONS.keys
+          app.set :favicon_versions, ::FaviconMaker::Generator::ICON_VERSIONS.keys
       
           app.after_build do
-            FaviconMaker::Generator.create_versions({
+            ::FaviconMaker::Generator.create_versions({
               :root_dir => app.settings.favicon_root_dir,
               :input_dir => app.settings.favicon_input_dir,
               :output_dir => app.settings.favicon_output_dir,
