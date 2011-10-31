@@ -1,0 +1,1 @@
+require "middleman-favicon-maker"
