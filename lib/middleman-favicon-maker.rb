@@ -19,7 +19,7 @@ module Middleman
               :base_image => app.settings.favicon_base_image,
               :versions => app.settings.favicon_versions,
             }) do |filepath|
-              say_status :created, filepath.gsub(app.root + "/", "")
+              say_status :generated, filepath.gsub(app.root + "/", "")
             end
           end
       
