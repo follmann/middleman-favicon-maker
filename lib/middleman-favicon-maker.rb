@@ -10,7 +10,7 @@ module Middleman
           app.set :favicon_output_dir, app.build_dir
           app.set :favicon_base_image, "favicon_base.png"
           app.set :favicon_versions, ::FaviconMaker::Generator::ICON_VERSIONS.keys
-      
+          
           app.after_build do
             ::FaviconMaker::Generator.create_versions({
               :root_dir => app.settings.favicon_root_dir,
@@ -18,6 +18,7 @@ module Middleman
               :output_dir => app.settings.favicon_output_dir,
               :base_image => app.settings.favicon_base_image,
               :versions => app.settings.favicon_versions,
+              :custom_versions => app.settings.favicon_custom_versions,
             }) do |filepath|
               say_status :generated, filepath.gsub(app.root + "/", "")
             end
