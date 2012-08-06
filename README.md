@@ -2,7 +2,7 @@ middleman-favicon-maker
 =======================
 Generate favicon files in various sizes from a base image in your [Middleman](http://middlemanapp.com/) project.
 
-This gem integrates []FaviconMaker](https://github.com/follmann/favicon_maker) effortless into your [Middleman](https://github.com/middleman/middleman) project.
+This gem integrates [FaviconMaker](https://github.com/follmann/favicon_maker) effortless into your [Middleman](https://github.com/middleman/middleman) project.
 
 
 ## IMPORTANT:
@@ -62,7 +62,7 @@ You can set the following options for `middleman-favicon-maker`:
     :favicon_maker_base_image # default: "favicon_base.png"
     :favicon_maker_versions # default: ::FaviconMaker::Generator::ICON_VERSIONS.keys
     :favicon_maker_custom_versions # default: {}
-    
+
     e.g.
     set :favicon_maker_input_dir, "favicons"
     set :favicon_maker_custom_versions, {:apple_extreme_retina => {:filename => "apple-touch-icon-228x228-precomposed.png", :dimensions => "228x228", :format => "png"}}
