@@ -4,11 +4,11 @@ module Middleman
       def registered(app, options={})
         require "favicon_maker"
 
-        options[:favicon_maker_root_dir] ||= ''
-        options[:favicon_maker_input_dir] ||= ''
-        options[:favicon_maker_output_dir] ||= ''
-        options[:favicon_maker_base_image] ||= 'favicon_base.png'
-        options[:favicon_maker_versions] ||= ::FaviconMaker::Generator::ICON_VERSIONS.keys
+        options[:favicon_maker_root_dir]        ||= ''
+        options[:favicon_maker_input_dir]       ||= ''
+        options[:favicon_maker_output_dir]      ||= ''
+        options[:favicon_maker_base_image]      ||= 'favicon_base.png'
+        options[:favicon_maker_versions]        ||= ::FaviconMaker::Generator::ICON_VERSIONS.keys
         options[:favicon_maker_custom_versions] ||= {}
 
         app.after_configuration do
@@ -22,13 +22,13 @@ module Middleman
 
         app.after_build do |builder|
           ::FaviconMaker::Generator.create_versions({
-            :root_dir => options[:favicon_maker_root_dir],
-            :input_dir => options[:favicon_maker_input_dir],
-            :output_dir => options[:favicon_maker_output_dir],
-            :base_image => options[:favicon_maker_base_image],
-            :versions => options[:favicon_maker_versions],
+            :root_dir =>        options[:favicon_maker_root_dir],
+            :input_dir =>       options[:favicon_maker_input_dir],
+            :output_dir =>      options[:favicon_maker_output_dir],
+            :base_image =>      options[:favicon_maker_base_image],
+            :versions =>        options[:favicon_maker_versions],
             :custom_versions => options[:favicon_maker_custom_versions],
-            :copy => true
+            :copy =>            true
           }) do |f|
             builder.say_status :generated, f.gsub(root + "/", "")
           end
