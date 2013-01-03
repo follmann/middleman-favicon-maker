@@ -46,6 +46,17 @@ That results in the following files being created in your middleman build direct
 
 **NOTE: The base image will not be copied to the build folder.**
 
+**NOTE:  Edit your layout.erb file and include references to the generated files**
+
+````
+<link type="image/ico" href="favicon.ico" rel="icon" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57x57-precomposed.png" />
+<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72-precomposed.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144-precomposed.png" />
+````
+
 ## Customise integration
 
 
