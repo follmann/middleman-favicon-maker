@@ -29,8 +29,8 @@ module Middleman
             :versions =>        options[:favicon_maker_versions],
             :custom_versions => options[:favicon_maker_custom_versions],
             :copy =>            true
-          }) do |f|
-            builder.say_status :generated, f.gsub(root + "/", "")
+          }) do |f, status|
+            builder.say_status status, f.gsub(root + "/", "")
           end
 
           # remove favicon_base_image from the build dir
