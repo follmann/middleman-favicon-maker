@@ -1,4 +1,4 @@
-middleman-favicon-maker
+middleman-favicon-maker [![Build Status](https://secure.travis-ci.org/follmann/middleman-favicon-maker.png)](http://travis-ci.org/[follmann]/[middleman-favicon-maker])
 =======================
 Generate favicon files in various sizes from a base image in your [Middleman](http://middlemanapp.com/) project.
 
@@ -19,7 +19,7 @@ This gem integrates [FaviconMaker](https://github.com/follmann/favicon_maker) ef
 > e.g. on OSX a simple ```$ brew install imagemagick``` does it.
 
 ## How to integrate into a middleman project
-1. Put a file called **favicon_base.png** into your source folder (ideally with the **dimensions of 114x114 pixels**)
+1. Put a file called **favicon_base.png** into your source folder (ideally with the **dimensions of 144x144 pixels**)
 <br><br>
 2. In your config.rb extend the `configure :build` block with:
 
