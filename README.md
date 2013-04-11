@@ -1,4 +1,4 @@
-middleman-favicon-maker [![Build Status](https://secure.travis-ci.org/follmann/middleman-favicon-maker.png)](http://travis-ci.org/[follmann]/[middleman-favicon-maker])
+middleman-favicon-maker [![Build Status](https://secure.travis-ci.org/follmann/middleman-favicon-maker.png)](http://travis-ci.org/follmann/middleman-favicon-maker)
 =======================
 Generate favicon files in various sizes from a base image in your [Middleman](http://middlemanapp.com/) project.
 
