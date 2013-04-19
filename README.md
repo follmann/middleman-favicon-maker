@@ -6,6 +6,14 @@ This gem integrates [FaviconMaker](https://github.com/follmann/favicon_maker) ef
 
 ## Install
 
+### Dependencies
+
+Before you can use FaviconMaker, you need to install [ImageMagick](http://www.imagemagick.org/script/index.php). On OS&nbsp;X, the easiest way to do this is to run:
+
+```
+$ brew install imagemagick
+```
+
 ### Standalone
     gem install middleman-favicon-maker
 
@@ -13,10 +21,6 @@ This gem integrates [FaviconMaker](https://github.com/follmann/favicon_maker) ef
 
 ### Using Bundler (recommended)
     gem "middleman-favicon-maker"
-
-#### Don't forget ImageMagick
-> ImageMagick is a dependecy of a dependecy of favicon_maker and therefore of this Gem as well. People tripped over this before, so be sure to have it installed.
-> e.g. on OSX a simple ```$ brew install imagemagick``` does it.
 
 ## How to integrate into a middleman project
 1. Put a file called **favicon_base.png** into your source folder (ideally with the **dimensions of 144x144 pixels**)
