@@ -69,8 +69,9 @@ You can set the following options for middleman-favicon-maker:
 For example:
 
 ``` ruby
-set :favicon_maker_input_dir, "favicons"
-set :favicon_maker_custom_versions, {:apple_extreme_retina => {:filename => "apple-touch-icon-228x228-precomposed.png", :dimensions => "228x228", :format => "png"}}
+activate :favicon_maker,
+  :favicon_maker_input_dir       =>"favicons"
+  :favicon_maker_custom_versions => {:apple_extreme_retina => {:filename => "apple-touch-icon-228x228-precomposed.png", :dimensions => "228x228", :format => "png"}}
 ```
 
 ## Markup meta links
