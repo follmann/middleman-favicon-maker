@@ -41,6 +41,7 @@ end
 When you build your Middleman project, middleman-favicon-maker will generate the following files  in your build directory:
 
 * apple-touch-icon-144x144-precomposed.png
+* apple-touch-icon-120x120-precomposed.png
 * apple-touch-icon-114x114-precomposed.png
 * apple-touch-icon-72x72-precomposed.png
 * apple-touch-icon-57x57-precomposed.png
