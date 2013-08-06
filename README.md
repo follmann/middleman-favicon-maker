@@ -32,6 +32,7 @@ This gem integrates [FaviconMaker](https://github.com/follmann/favicon_maker) ef
 That results in the following files being created in your middleman build directory:
 
     build/apple-touch-icon-144x144-precomposed.png
+    build/apple-touch-icon-120x120-precomposed.png
     build/apple-touch-icon-114x114-precomposed.png
     build/apple-touch-icon-72x72-precomposed.png
     build/apple-touch-icon-57x57-precomposed.png
