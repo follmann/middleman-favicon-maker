@@ -8,7 +8,7 @@ module Middleman
         options[:favicon_maker_input_dir]       ||= ''
         options[:favicon_maker_output_dir]      ||= ''
         options[:favicon_maker_base_image]      ||= 'favicon_base.png'
-        options[:favicon_maker_versions]        ||= ::FaviconMaker::Generator::ICON_VERSIONS.keys
+        options[:favicon_maker_versions]        ||= [ :fav_png, :fav_ico ]
         options[:favicon_maker_custom_versions] ||= {}
 
         app.after_configuration do

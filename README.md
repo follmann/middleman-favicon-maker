@@ -63,7 +63,7 @@ You can set the following options for middleman-favicon-maker:
 :favicon_maker_input_dir       # default: app.views -> source/
 :favicon_maker_output_dir      # default: app.build_dir -> build/
 :favicon_maker_base_image      # default: "favicon_base.png"
-:favicon_maker_versions        # default: ::FaviconMaker::Generator::ICON_VERSIONS.keys
+:favicon_maker_versions        # default: [ :fav_png, :fav_ico ]
 :favicon_maker_custom_versions # default: {}
 ```
 
