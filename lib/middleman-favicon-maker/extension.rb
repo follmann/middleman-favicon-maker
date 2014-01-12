@@ -7,7 +7,7 @@ module Middleman
         options[:favicon_maker_root_dir]        ||= ''
         options[:favicon_maker_input_dir]       ||= ''
         options[:favicon_maker_output_dir]      ||= ''
-        options[:favicon_maker_base_image]      ||= 'favicon_base.png'
+        options[:favicon_maker_base_image]      ||= '_favicon_base.png'
         options[:favicon_maker_versions]        ||= [ :fav_png, :fav_ico ]
         options[:favicon_maker_custom_versions] ||= {}
 
@@ -32,9 +32,6 @@ module Middleman
           }) do |f, status|
             builder.say_status status, f.gsub(root + "/", "")
           end
-
-          # remove favicon_base_image from the build dir
-          builder.remove_file File.join(options[:favicon_maker_root_dir], options[:favicon_maker_output_dir], options[:favicon_maker_base_image])
         end
       end
       alias :included :registered

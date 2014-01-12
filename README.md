@@ -38,19 +38,30 @@ configure :build do
 end
 ```
 
-When you build your Middleman project, middleman-favicon-maker will generate the following files  in your build directory:
-
-* apple-touch-icon-144x144-precomposed.png
-* apple-touch-icon-120x120-precomposed.png
-* apple-touch-icon-114x114-precomposed.png
-* apple-touch-icon-72x72-precomposed.png
-* apple-touch-icon-57x57-precomposed.png
-* apple-touch-icon-precomposed.png
-* apple-touch-icon.png
-* favicon.ico
-* favicon.png
-
-The base image will not be copied into the build folder.
+When you build your Middleman project, middleman-favicon-maker will generate `favicon.png` and `favicon.ico` in your build directory. There are a large array of `favicon_maker_versions` you can use by default:
+``` ruby
+  activate :favicon_maker, 
+    favicon_maker_versions: %i{
+      apple_152
+      apple_144
+      apple_120
+      apple_114
+      apple_76
+      apple_72
+      apple_60
+      apple_57
+      apple_pre  # 57x57
+      apple      # 57x57
+      fav_196
+      fav_160
+      fav_96
+      fav_32
+      fav_16
+      fav_png    # 16x16
+      fav_ico    # 64x64, 32x32, 24x24, 16x16
+      mstile_144
+    }
+```
 
 ## Customizing middleman-favicon-maker
 
@@ -62,7 +73,7 @@ You can set the following options for middleman-favicon-maker:
 :favicon_maker_root_dir        # default: app.root
 :favicon_maker_input_dir       # default: app.views -> source/
 :favicon_maker_output_dir      # default: app.build_dir -> build/
-:favicon_maker_base_image      # default: "favicon_base.png"
+:favicon_maker_base_image      # default: "_favicon_base.png"
 :favicon_maker_versions        # default: [ :fav_png, :fav_ico ]
 :favicon_maker_custom_versions # default: {}
 ```
