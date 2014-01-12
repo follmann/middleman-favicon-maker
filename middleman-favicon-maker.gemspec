@@ -7,7 +7,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["hello@toyrocketscience.com"]
   gem.version       = Middleman::FaviconMaker::VERSION
   gem.platform      = Gem::Platform::RUBY
-  gem.authors       = ["Andreas Follmann", "Kematzy"]
+  gem.authors       = ["Andreas Follmann"]
   gem.email         = ["andreas@toyrocketscience.com"]
   gem.homepage      = "https://github.com/follmann/middleman-favicon-maker"
   gem.summary       = %q{Generate favicon files in various sizes from a base image in your Middleman project}
@@ -20,5 +20,5 @@ Gem::Specification.new do |gem|
 
   # Additional dependencies
   gem.add_runtime_dependency("middleman-core", [">= 3.0.0"])
-  gem.add_runtime_dependency("favicon_maker", ["~> 0.3"])
+  gem.add_runtime_dependency("favicon_maker", ["~> 1.0"])
 end
