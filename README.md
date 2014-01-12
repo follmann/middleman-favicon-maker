@@ -22,7 +22,7 @@ If you're using Middleman version 2.x, use version 0.0.6 of middleman-favicon-ma
 
 ## Integrating with Middleman
 
-Create a favicon_template.png image and place it in your source directory. Ideally, this image's dimensions would be 152 x 152. In config.rb, extend the `configure :build` block:
+Create a favicon_template.png image and place it in your source directory. Ideally, this image's dimensions would be 152 x 152. In config.rb, extend the `configure :build` block. The template images are deleted from the build folder (Middleman copies them) after all icons have been generated.
 
 ### Simple config
 This config assumes that a PNG file named favicon_template.png lives in the source folder. The generated icons are stored in the build folder root.
@@ -91,8 +91,7 @@ This is a moving target. Feel free to extend it and submit the change.
     { icon: "favicon.ico", size: "64x64,32x32,24x24,16x16" },
     { icon: "mstile-144x144", format: "png" },
   ]
-
-The template images are deleted from the build folder (Middleman copies them) after all icons have been generated.
+```
 
 ## Markup meta links
 
@@ -101,6 +100,7 @@ Specifying meta links is only necessary if you want to support non-iOS devices. 
 ### HTML
 
 ``` html
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152x152-precomposed.png" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144-precomposed.png" />
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png" />
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72-precomposed.png" />
@@ -112,7 +112,7 @@ Specifying meta links is only necessary if you want to support non-iOS devices. 
 ### HAML
 
 ``` haml
-%link{ rel: "apple-touch-icon", sizes: "152x152", href: "apple-touch-icon-144x144-precomposed.png" }
+%link{ rel: "apple-touch-icon", sizes: "152x152", href: "apple-touch-icon-152x152-precomposed.png" }
 %link{ rel: "apple-touch-icon", sizes: "144x144", href: "apple-touch-icon-144x144-precomposed.png" }
 %link{ rel: "apple-touch-icon", sizes: "114x114", href: "apple-touch-icon-114x114-precomposed.png" }
 %link{ rel: "apple-touch-icon", sizes: "72x72", href: "apple-touch-icon-72x72-precomposed.png" }
