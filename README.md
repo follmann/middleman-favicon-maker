@@ -38,7 +38,7 @@ configure :build do
 end
 ```
 
-When you build your Middleman project, middleman-favicon-maker will generate `favicon.png` and `favicon.ico` in your build directory. There is a large array of favicon_maker_versions you can use by default:
+When you build your Middleman project, middleman-favicon-maker will generate `favicon.png` and `favicon.ico` in your build directory. There are a large array of `favicon_maker_versions` you can use by default:
 ``` ruby
   activate :favicon_maker, 
     favicon_maker_versions: %i{
