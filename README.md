@@ -71,7 +71,7 @@ end
 This is a moving target. Feel free to extend it and submit the change.
 
 ``` ruby
-  :icons => [
+  [
     { icon: "apple-touch-icon-152x152-precomposed.png" },
     { icon: "apple-touch-icon-144x144-precomposed.png" },
     { icon: "apple-touch-icon-120x120-precomposed.png" },
