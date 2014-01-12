@@ -42,7 +42,7 @@ end
 ```
 
 ### Advanced config
-Using all configuration options. The template_dir/output_dir require absolute paths. You can use multiple template files that suit the different resolutions better. ```format``` and ```size``` are optional and only required when the size of the icon and/or the file format is not encoded in the filename. Multiple resolutions in one file is only supported for the .ico format.
+Using all configuration options. The `template_dir` and `output_dir` require absolute paths. You can use multiple template files that suit the different resolutions better. `format` and `size` are optional and only required when the size of the icon and/or the file format is not encoded in the filename. Multiple resolutions in one file is only supported for the .ico format.
 
 ``` ruby
 configure :build do
@@ -120,6 +120,12 @@ Specifying meta links is only necessary if you want to support non-iOS devices. 
 %link{ rel: "shortcut icon", href: "favicon.png" }
 %link{ rel: "icon", type: "image/ico", href: "favicon.ico" }
 ```
+## Contributing
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
 
 ## Copyright
 
