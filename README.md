@@ -12,68 +12,61 @@ Before you can use FaviconMaker, you need to install [ImageMagick](http://www.im
 brew install imagemagick
 ```
 
-### Using Bundler (recommended)
+### Using Bundler
 
 ``` ruby
-gem "middleman-favicon-maker", "~> 3.2"
+gem "middleman-favicon-maker", "~> 3.5"
 ```
 
 If you're using Middleman version 2.x, use version 0.0.6 of middleman-favicon-maker.
 
-### Standalone
-
-``` shell
-gem install middleman-favicon-maker
-```
-
 ## Integrating with Middleman
 
-Create a favicon_base.png image and place it in your source directory. Ideally, this image's dimensions would be 144 x 144. In config.rb, extend the `configure :build` block:
+Create a favicon_template.png image and place it in your source directory. Ideally, this image's dimensions would be 152 x 152. In config.rb, extend the `configure :build` block:
+
+### Simple config
+This config assumes that a PNG file named favicon_template.png lives in the source folder. The generated icons are stored in the build folder root.
 
 ``` ruby
 configure :build do
   ...
-  activate :favicon_maker
+  activate :favicon_maker, :icons => {
+    "favicon_template.png" => [
+      { icon: "apple-touch-icon-152x152-precomposed.png" },
+      { icon: "apple-touch-icon-114x114-precomposed.png" },
+      { icon: "apple-touch-icon-72x72-precomposed.png" },
+    ]
+  }
   ...
 end
 ```
 
-When you build your Middleman project, middleman-favicon-maker will generate the following files  in your build directory:
-
-* apple-touch-icon-144x144-precomposed.png
-* apple-touch-icon-120x120-precomposed.png
-* apple-touch-icon-114x114-precomposed.png
-* apple-touch-icon-72x72-precomposed.png
-* apple-touch-icon-57x57-precomposed.png
-* apple-touch-icon-precomposed.png
-* apple-touch-icon.png
-* favicon.ico
-* favicon.png
-
-The base image will not be copied into the build folder.
-
-## Customizing middleman-favicon-maker
-
-Version 3.x of this gem uses the `favicon_maker_` prefix for configuration options to be consistent with the activation keyword `:favicon_maker`. Previously the `favicon_` prefix was used.
-
-You can set the following options for middleman-favicon-maker:
+### Advanced config
+Using all configuration options. The template_dir/output_dir require absolute paths. You can use multiple template files that suit the different resolutions better. ```format``` and ```size``` are optional and only required when the size of the icon and/or the file format is not encoded in the filename. Multiple resolutions in one file is only supported for the .ico format.
 
 ``` ruby
-:favicon_maker_root_dir        # default: app.root
-:favicon_maker_input_dir       # default: app.views -> source/
-:favicon_maker_output_dir      # default: app.build_dir -> build/
-:favicon_maker_base_image      # default: "favicon_base.png"
-:favicon_maker_versions        # default: [ :fav_png, :fav_ico ]
-:favicon_maker_custom_versions # default: {}
+configure :build do
+  ...
+  activate :favicon_maker do |f|
+    f.template_dir  = File.join(root, 'source')
+    f.output_dir    = File.join(root, 'build')
+    f.icons = {
+      "favicon_template_hires.png" => [
+        { icon: "apple-touch-icon-152x152-precomposed.png" },
+        { icon: "apple-touch-icon-114x114-precomposed.png" },
+        { icon: "apple-touch-icon-72x72-precomposed.png" },
+        { icon: "mstile-144x144", format: :png },
+      ],
+      "favicon_template_lores.png" => [
+        { icon: "favicon.png", size: "16x16" },
+        { icon: "favicon.ico", size: "64x64,32x32,24x24,16x16" },
+      ]
+    }
+  end
+  ...
+end
 ```
-
-For example:
-
-``` ruby
-activate :favicon_maker,
-  :favicon_maker_input_dir       =>"favicons"
-  :favicon_maker_custom_versions => {:apple_extreme_retina => {:filename => "apple-touch-icon-228x228-precomposed.png", :dimensions => "228x228", :format => "png"}}
-```
+The template images are deleted from the build folder (Middleman copies them) after all icons have been generated.
 
 ## Markup meta links
 
@@ -93,6 +86,7 @@ Specifying meta links is only necessary if you want to support non-iOS devices. 
 ### HAML
 
 ``` haml
+%link{ rel: "apple-touch-icon", sizes: "152x152", href: "apple-touch-icon-144x144-precomposed.png" }
 %link{ rel: "apple-touch-icon", sizes: "144x144", href: "apple-touch-icon-144x144-precomposed.png" }
 %link{ rel: "apple-touch-icon", sizes: "114x114", href: "apple-touch-icon-114x114-precomposed.png" }
 %link{ rel: "apple-touch-icon", sizes: "72x72", href: "apple-touch-icon-72x72-precomposed.png" }
@@ -103,4 +97,4 @@ Specifying meta links is only necessary if you want to support non-iOS devices. 
 
 ## Copyright
 
-&copy; 2011-2013 Andreas Follmann. See LICENSE for details.
+&copy; 2011-2014 Andreas Follmann. See LICENSE for details.

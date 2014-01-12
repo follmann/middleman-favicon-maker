@@ -1,43 +1,46 @@
+require "favicon_maker"
+
 module Middleman
   module FaviconMaker
-    class << self
-      def registered(app, options={})
-        require "favicon_maker"
+    class FaviconMakerExtension < Extension
 
-        options[:favicon_maker_root_dir]        ||= ''
-        options[:favicon_maker_input_dir]       ||= ''
-        options[:favicon_maker_output_dir]      ||= ''
-        options[:favicon_maker_base_image]      ||= 'favicon_base.png'
-        options[:favicon_maker_versions]        ||= [ :fav_png, :fav_ico ]
-        options[:favicon_maker_custom_versions] ||= {}
+      option :template_dir, nil, "Template dir for icon templates"
+      option :output_dir,   nil, "Output dir for generated icons"
+      option :icons,        {}, "Hash with template filename (key) and Array of Hashes with icon configs"
 
-        app.after_configuration do
-          # configs are either default or set by user in config.rb
-          # due to Middleman extension limitations, we need to ensure they are sane
-          # before we continue
-          options[:favicon_maker_root_dir]   = root      if options[:favicon_maker_root_dir].empty?
-          options[:favicon_maker_input_dir]  = source    if options[:favicon_maker_input_dir].empty?
-          options[:favicon_maker_output_dir] = build_dir if options[:favicon_maker_output_dir].empty?
-        end
+      def after_configuration
+        options[:template_dir]  ||= File.join(app.root, app.settings[:source])    if options[:template_dir].nil?
+        options[:output_dir]    ||= File.join(app.root, app.settings[:build_dir]) if options[:output_dir].nil?
+      end
 
-        app.after_build do |builder|
-          ::FaviconMaker::Generator.create_versions({
-            :root_dir =>        options[:favicon_maker_root_dir],
-            :input_dir =>       options[:favicon_maker_input_dir],
-            :output_dir =>      options[:favicon_maker_output_dir],
-            :base_image =>      options[:favicon_maker_base_image],
-            :versions =>        options[:favicon_maker_versions],
-            :custom_versions => options[:favicon_maker_custom_versions],
-            :copy =>            true
-          }) do |f, status|
-            builder.say_status status, f.gsub(root + "/", "")
+      def after_build(builder)
+
+        template_files = []
+        ::FaviconMaker.generate do
+          setup do
+            template_dir  options[:template_dir]
+            output_dir    options[:output_dir]
           end
 
-          # remove favicon_base_image from the build dir
-          builder.remove_file File.join(options[:favicon_maker_root_dir], options[:favicon_maker_output_dir], options[:favicon_maker_base_image])
+          options[:icons].each do |input_filename, icon_configs|
+            from input_filename do
+              icon_configs.each do |icon_config|
+                icon icon_config.delete(:icon), icon_config
+              end
+            end
+          end
+
+          each_icon do |filepath, template_filepath|
+            builder.say_status :generate, filepath.gsub(options[:output_dir] + "/", "")
+            template_files << template_filepath
+          end
         end
+
+        template_files.uniq.each do |template_filepath|
+          builder.remove_file template_filepath.gsub(options[:template_dir], options[:output_dir])
+        end
+
       end
-      alias :included :registered
     end
   end
 end
