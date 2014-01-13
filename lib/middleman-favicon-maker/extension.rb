@@ -9,8 +9,8 @@ module Middleman
       option :icons,        {}, "Hash with template filename (key) and Array of Hashes with icon configs"
 
       def after_configuration
-        options[:template_dir]  ||= File.join(app.root, app.settings[:source])    if options[:template_dir].nil?
-        options[:output_dir]    ||= File.join(app.root, app.settings[:build_dir]) if options[:output_dir].nil?
+        options[:template_dir]  ||= source_path if options[:template_dir].nil?
+        options[:output_dir]    ||= build_path  if options[:output_dir].nil?
       end
 
       def after_build(builder)
@@ -37,10 +37,20 @@ module Middleman
         end
 
         template_files.uniq.each do |template_filepath|
-          template_filepath.gsub!(options[:template_dir], options[:output_dir])
+          template_filepath.gsub!(source_path, '')
+          template_filepath = File.join(options[:output_dir], template_filepath)
           builder.remove_file(template_filepath) if File.exists?(template_filepath)
         end
 
+      end
+
+      private
+      def source_path
+        File.join(app.root, app.settings[:source])
+      end
+
+      def build_path
+        File.join(app.root, app.settings[:build_dir])
       end
     end
   end
