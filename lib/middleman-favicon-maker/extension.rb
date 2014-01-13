@@ -38,7 +38,7 @@ module Middleman
 
         template_files.uniq.each do |template_filepath|
           template_filepath.gsub!(options[:template_dir], options[:output_dir])
-          File.exists?(template_filepath) and builder.remove_file(template_filepath)
+          builder.remove_file(template_filepath) if File.exists?(template_filepath)
         end
 
       end
