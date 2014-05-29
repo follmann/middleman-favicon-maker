@@ -1,25 +1,16 @@
-require "favicon_maker"
+require 'favicon_maker'
 
 module Middleman
   module FaviconMaker
     class FaviconMakerExtension < Extension
+      option :template_dir, nil, 'Template dir for icon templates'
+      option :icons, {}, 'Hash with template filename (key) and Array of Hashes with icon configs'
 
-      option :template_dir, nil, "Template dir for icon templates"
-      option :output_dir,   nil, "Output dir for generated icons"
-      option :icons,        {}, "Hash with template filename (key) and Array of Hashes with icon configs"
-
-      def after_configuration
-        options[:template_dir]  ||= source_path if options[:template_dir].nil?
-        options[:output_dir]    ||= build_path  if options[:output_dir].nil?
-      end
-
-      def after_build(builder)
-
-        template_files = []
+      def after_build builder
         ::FaviconMaker.generate do
           setup do
-            template_dir  options[:template_dir]
-            output_dir    options[:output_dir]
+            template_dir File.join app.source_dir, options[:template_dir]
+            output_dir app.build_dir
           end
 
           options[:icons].each do |input_filename, icon_configs|
@@ -31,26 +22,9 @@ module Middleman
           end
 
           each_icon do |filepath, template_filepath|
-            builder.say_status :generate, filepath.gsub(options[:output_dir] + "/", "")
-            template_files << template_filepath
+            builder.say_status :create, filepath
           end
         end
-
-        template_files.uniq.each do |template_filepath|
-          template_filepath.gsub!(source_path, '')
-          template_filepath = File.join(options[:output_dir], template_filepath)
-          builder.remove_file(template_filepath) if File.exists?(template_filepath)
-        end
-
-      end
-
-      private
-      def source_path
-        File.join(app.root, app.settings[:source])
-      end
-
-      def build_path
-        File.join(app.root, app.settings[:build_dir])
       end
     end
   end
