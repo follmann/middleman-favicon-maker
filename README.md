@@ -1,4 +1,4 @@
-# middleman-favicon-maker [![Build Status](https://secure.travis-ci.org/follmann/middleman-favicon-maker.png)](http://travis-ci.org/follmann/middleman-favicon-maker) [![Code Climate](https://codeclimate.com/github/follmann/middleman-favicon-maker.png)](https://codeclimate.com/github/follmann/middleman-favicon-maker)
+# middleman-favicon-maker [![Code Climate](https://codeclimate.com/github/follmann/middleman-favicon-maker.png)](https://codeclimate.com/github/follmann/middleman-favicon-maker)
 
 [FaviconMaker](https://github.com/follmann/favicon_maker) is a gem which generates favicon files in various sizes from a base image. This gem integrates FaviconMaker effortlessly into your [Middleman](https://github.com/middleman/middleman) project.
 
