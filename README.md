@@ -23,8 +23,8 @@ gem "middleman-favicon-maker", "~> 3.5"
 If you're using Middleman version 2.x, use version 0.0.6 of middleman-favicon-maker.
 
 ## Integrating with Middleman
-
-Create an image e.g. named `_favicon_template.png` and place it in your source directory. The leading underscore prevents it from being copied into the build directory. Ideally, this image's dimensions would be 152 x 152 or have multiple templates for different ranges (small, medium, big). In your config.rb, extend the `configure :build` block.
+### Templates
+Create an image e.g. named `_favicon_template.png` and place it in your source directory. The leading underscore prevents it from being copied into the build directory. Ideally, this image's dimensions would be 152 x 152 or have multiple templates for different ranges (small, medium, big). In your config.rb, extend the `configure :build` block. The image formats used for templates should be either PNG or SVG (since v3.6).
 
 ### Simple config
 This config assumes that a PNG file named favicon_template.png lives in the source folder. The generated icons are stored in the build folder root.
