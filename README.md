@@ -22,7 +22,7 @@ If you're using Middleman version 2.x, use version 0.0.6 of middleman-favicon-ma
 
 ## Integrating with Middleman
 
-Create a favicon_template.png image and place it in your source directory. Ideally, this image's dimensions would be 152 x 152. In config.rb, extend the `configure :build` block. The template images are deleted from the build folder (Middleman copies them) after all icons have been generated.
+Create an image e.g. named `_favicon_template.png` and place it in your source directory. The leading underscore prevents it from being copied into the build directory. Ideally, this image's dimensions would be 152 x 152 or have multiple templates for different ranges (small, medium, big). In your config.rb, extend the `configure :build` block.
 
 ### Simple config
 This config assumes that a PNG file named favicon_template.png lives in the source folder. The generated icons are stored in the build folder root.
@@ -31,7 +31,7 @@ This config assumes that a PNG file named favicon_template.png lives in the sour
 configure :build do
   ...
   activate :favicon_maker, :icons => {
-    "favicon_template.png" => [
+    "_favicon_template.png" => [
       { icon: "apple-touch-icon-152x152-precomposed.png" },
       { icon: "apple-touch-icon-114x114-precomposed.png" },
       { icon: "apple-touch-icon-72x72-precomposed.png" },
@@ -51,13 +51,13 @@ configure :build do
     f.template_dir  = File.join(root, 'source')
     f.output_dir    = File.join(root, 'build')
     f.icons = {
-      "favicon_template_hires.png" => [
+      "_favicon_template_hires.png" => [
         { icon: "apple-touch-icon-152x152-precomposed.png" },
         { icon: "apple-touch-icon-114x114-precomposed.png" },
         { icon: "apple-touch-icon-72x72-precomposed.png" },
         { icon: "mstile-144x144", format: :png },
       ],
-      "favicon_template_lores.png" => [
+      "_favicon_template_lores.png" => [
         { icon: "favicon.png", size: "16x16" },
         { icon: "favicon.ico", size: "64x64,32x32,24x24,16x16" },
       ]
