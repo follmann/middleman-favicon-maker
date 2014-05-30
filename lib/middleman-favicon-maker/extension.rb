@@ -6,11 +6,11 @@ module Middleman
 
       option :template_dir, nil, "Template dir for icon templates"
       option :output_dir,   nil, "Output dir for generated icons"
-      option :icons,        {}, "Hash with template filename (key) and Array of Hashes with icon configs"
+      option :icons,        {},  "Hash with template filename (key) and Array of Hashes with icon configs"
 
       def after_configuration
-        options[:template_dir]  ||= source_path if options[:template_dir].nil?
-        options[:output_dir]    ||= build_path  if options[:output_dir].nil?
+        options[:template_dir] ||= source_path
+        options[:output_dir]   ||= build_path
       end
 
       def after_build(builder)
