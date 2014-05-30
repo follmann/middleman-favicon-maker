@@ -1,7 +1,7 @@
 module Middleman
   module FaviconMaker
     MAJOR = 3
-    MINOR = 6
+    MINOR = 7
     PATCH = nil
     BUILD = nil
 
