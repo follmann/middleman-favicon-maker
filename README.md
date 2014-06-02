@@ -17,7 +17,7 @@ brew install imagemagick
 ### Using Bundler
 
 ``` ruby
-gem "middleman-favicon-maker", "~> 3.5"
+gem "middleman-favicon-maker", "~> 3.7"
 ```
 
 If you're using Middleman version 2.x, use version 0.0.6 of middleman-favicon-maker.
@@ -27,7 +27,7 @@ If you're using Middleman version 2.x, use version 0.0.6 of middleman-favicon-ma
 Create an image e.g. named `_favicon_template.png` and place it in your source directory. The leading underscore prevents it from being copied into the build directory. Ideally, this image's dimensions would be 152 x 152 or have multiple templates for different ranges (small, medium, big). In your config.rb, extend the `configure :build` block. The image formats used for templates should be either PNG or SVG (since v3.6).
 
 ### Simple config
-This config assumes that a PNG file named favicon_template.png lives in the source folder. The generated icons are stored in the build folder root.
+This config assumes that a PNG file named `_favicon_template.png` lives in the source folder. The generated icons are stored in the build folder root.
 
 ``` ruby
 configure :build do
