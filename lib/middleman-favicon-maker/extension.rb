@@ -39,11 +39,11 @@ module Middleman
 
       private
       def source_path
-        File.join(app.root, app.settings[:source])
+        File.join(app.root, app.config.source)
       end
 
       def build_path
-        File.join(app.root, app.settings[:build_dir])
+        File.join(app.root, app.config.build_dir)
       end
     end
   end
