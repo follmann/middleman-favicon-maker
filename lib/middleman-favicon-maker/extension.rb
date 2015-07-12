@@ -1,4 +1,5 @@
 require "favicon_maker"
+require "pathname"
 
 module Middleman
   module FaviconMaker
@@ -25,25 +26,27 @@ module Middleman
           options[:icons].each do |input_filename, icon_configs|
             from input_filename do
               icon_configs.each do |icon_config|
-                icon icon_config.delete(:icon), icon_config
+                icon icon_config[:icon], icon_config
               end
             end
           end
 
           each_icon do |filepath, template_filepath|
-            builder.say_status :create, filepath
+            rel_path = Pathname.new(filepath).relative_path_from(Pathname.new(app.root)).to_s
+            builder.trigger(:create, nil, rel_path)
           end
         end
 
       end
 
       private
+
       def source_path
-        File.join(app.root, app.settings[:source])
+        File.join(app.root, app.config.source)
       end
 
       def build_path
-        File.join(app.root, app.settings[:build_dir])
+        File.join(app.root, app.config.build_dir)
       end
     end
   end
