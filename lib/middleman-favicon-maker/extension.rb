@@ -32,7 +32,13 @@ module Middleman
           end
 
           each_icon do |filepath, template_filepath|
-            rel_path = Pathname.new(filepath).relative_path_from(Pathname.new(app.root)).to_s
+            pathname = Pathname.new(filepath)
+            rel_path =
+              if pathname.absolute?
+                pathname.relative_path_from(Pathname.new(app.root)).to_s
+              else
+                filepath
+              end
             builder.trigger(:create, nil, rel_path)
           end
         end

@@ -44,14 +44,13 @@ end
 ```
 
 ### Advanced config
-Using all configuration options. The `template_dir` and `output_dir` require absolute paths. You can use multiple template files that suit the different resolutions better. `format` and `size` are optional and only required when the size of the icon and/or the file format is not encoded in the filename. Multiple resolutions in one file is only supported for the .ico format.
+Using all configuration options. The `template_dir` and `output_dir` point to source and build dir if not set, you can use absolute or relative paths. You can use multiple template files that suit the different resolutions better. `format` and `size` are optional and only required when the size of the icon and/or the file format is not encoded in the filename. Multiple resolutions in one file is only supported for the .ico format.
 
 ``` ruby
 configure :build do
   ...
   activate :favicon_maker do |f|
-    f.template_dir  = File.join(root, 'source')
-    f.output_dir    = File.join(root, 'build')
+    f.template_dir  = 'source/images'
     f.icons = {
       "_favicon_template_hires.png" => [
         { icon: "apple-touch-icon-152x152-precomposed.png" },
