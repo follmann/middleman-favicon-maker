@@ -20,5 +20,5 @@ Gem::Specification.new do |gem|
 
   # Additional dependencies
   gem.add_runtime_dependency 'middleman-core', '~> 4.0.beta'
-  gem.add_runtime_dependency 'favicon_maker', '~> 1.3'
+  gem.add_runtime_dependency 'favicon_maker', '~> 1.3', '>= 1.3.1'
 end
