@@ -39,7 +39,7 @@ module Middleman
               else
                 filepath
               end
-            builder.trigger(:create, nil, rel_path)
+            builder.trigger(:created, rel_path)
           end
         end
 
