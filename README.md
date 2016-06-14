@@ -73,6 +73,7 @@ This is a moving target. Feel free to extend it and submit the change.
 
 ``` ruby
   [
+    { icon: "apple-touch-icon-180x180-precomposed.png" },             # Same as apple-touch-icon-57x57.png, for iPhone 6 Plus with @3× display
     { icon: "apple-touch-icon-152x152-precomposed.png" },             # Same as apple-touch-icon-57x57.png, for retina iPad with iOS7.
     { icon: "apple-touch-icon-144x144-precomposed.png" },             # Same as apple-touch-icon-57x57.png, for retina iPad with iOS6 or prior.
     { icon: "apple-touch-icon-120x120-precomposed.png" },             # Same as apple-touch-icon-57x57.png, for retina iPhone with iOS7.
@@ -105,6 +106,7 @@ Specifying meta links is only necessary if you want to support non-iOS devices. 
 ### HTML
 
 ``` html
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="apple-touch-icon-180x180-precomposed.png" />
 <link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152x152-precomposed.png" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144-precomposed.png" />
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png" />
@@ -117,6 +119,7 @@ Specifying meta links is only necessary if you want to support non-iOS devices. 
 ### HAML
 
 ``` haml
+%link{ rel: "apple-touch-icon", sizes: "180x180", href: "apple-touch-icon-180x180-precomposed.png" }
 %link{ rel: "apple-touch-icon", sizes: "152x152", href: "apple-touch-icon-152x152-precomposed.png" }
 %link{ rel: "apple-touch-icon", sizes: "144x144", href: "apple-touch-icon-144x144-precomposed.png" }
 %link{ rel: "apple-touch-icon", sizes: "114x114", href: "apple-touch-icon-114x114-precomposed.png" }
