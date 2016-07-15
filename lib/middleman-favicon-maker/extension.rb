@@ -45,6 +45,19 @@ module Middleman
 
       end
 
+      def manipulate_resource_list(resources)
+        options[:icons].each do|src, items|
+          resources += items.map do|item|
+            ::Middleman::Sitemap::Resource.new(
+              app.sitemap,
+              item[:icon],
+              File.join(options[:template_dir], src)
+            )
+          end
+        end
+        resources
+      end
+
       private
 
       def source_path
