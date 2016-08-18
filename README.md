@@ -128,6 +128,19 @@ Specifying meta links is only necessary if you want to support non-iOS devices. 
 %link{ rel: "shortcut icon", href: "favicon.png" }
 %link{ rel: "icon", type: "image/ico", href: "favicon.ico" }
 ```
+
+### Slim
+```slim
+link href="apple-touch-icon-180x180-precomposed.png" rel="apple-touch-icon-precomposed" sizes="180x180" /
+link href="apple-touch-icon-152x152-precomposed.png" rel="apple-touch-icon-precomposed" sizes="152x152" /
+link href="apple-touch-icon-144x144-precomposed.png" rel="apple-touch-icon-precomposed" sizes="144x144" /
+link href="apple-touch-icon-114x114-precomposed.png" rel="apple-touch-icon-precomposed" sizes="114x114" /
+link href="apple-touch-icon-72x72-precomposed.png" rel="apple-touch-icon-precomposed" sizes="72x72" /
+link href="apple-touch-icon-precomposed.png" rel="apple-touch-icon-precomposed" /
+link href="favicon.png" rel=("shortcut icon") /
+link href="favicon.ico" rel="icon" type="image/ico" /
+```
+
 ## Contributing
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
