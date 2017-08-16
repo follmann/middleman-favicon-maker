@@ -1,4 +1,5 @@
 # middleman-favicon-maker
+
 [![Gem Version](https://badge.fury.io/rb/middleman-favicon-maker.svg)](http://badge.fury.io/rb/middleman-favicon-maker)
 [![Code Climate](https://codeclimate.com/github/follmann/middleman-favicon-maker.png)](https://codeclimate.com/github/follmann/middleman-favicon-maker)
 
@@ -8,28 +9,31 @@
 
 ### Dependencies
 
-Before you can use FaviconMaker, you need to install [ImageMagick](http://www.imagemagick.org/script/index.php). On OS&nbsp;X, the easiest way to do this is to run:
+Before you can use FaviconMaker, you need to install [ImageMagick](http://www.imagemagick.org/script/index.php). On macOS, the easiest way to do this is to run:
 
-``` shell
+```shell
 brew install imagemagick
 ```
 
 ### Using Bundler
 
-``` ruby
+```ruby
 gem "middleman-favicon-maker", "~> 4.0"
 ```
 
 If you're using Middleman version 2.x, use version 0.0.6 of middleman-favicon-maker.
 
 ## Integrating with Middleman
+
 ### Templates
+
 Create an image e.g. named `_favicon_template.png` and place it in your source directory. The leading underscore prevents it from being copied into the build directory. Ideally, this image's dimensions would be 152 x 152 or have multiple templates for different ranges (small, medium, big). In your config.rb, extend the `configure :build` block. The image formats used for templates should be either PNG or SVG (since v3.6).
 
 ### Simple config
+
 This config assumes that a PNG file named `_favicon_template.png` lives in the source folder. The generated icons are stored in the build folder root.
 
-``` ruby
+```ruby
 configure :build do
   ...
   activate :favicon_maker, :icons => {
@@ -44,9 +48,10 @@ end
 ```
 
 ### Advanced config
+
 Using all configuration options. The `template_dir` and `output_dir` point to source and build dir if not set, you can use absolute or relative paths. You can use multiple template files that suit the different resolutions better. `format` and `size` are optional and only required when the size of the icon and/or the file format is not encoded in the filename. Multiple resolutions in one file is only supported for the .ico format.
 
-``` ruby
+```ruby
 configure :build do
   ...
   activate :favicon_maker do |f|
@@ -69,9 +74,10 @@ end
 ```
 
 ### List of icons you might be interested in
+
 This is a moving target. Feel free to extend it and submit the change.
 
-``` ruby
+```ruby
   [
     { icon: "apple-touch-icon-180x180-precomposed.png" },             # Same as apple-touch-icon-57x57.png, for iPhone 6 Plus with @3× display
     { icon: "apple-touch-icon-152x152-precomposed.png" },             # Same as apple-touch-icon-57x57.png, for retina iPad with iOS7.
@@ -105,43 +111,45 @@ Specifying meta links is only necessary if you want to support non-iOS devices. 
 
 ### HTML
 
-``` html
-<link rel="apple-touch-icon-precomposed" sizes="180x180" href="apple-touch-icon-180x180-precomposed.png" />
-<link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152x152-precomposed.png" />
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144-precomposed.png" />
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png" />
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72-precomposed.png" />
-<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png" />
-<link rel="shortcut icon" href="favicon.png" />
-<link rel="icon" type="image/ico" href="favicon.ico" />
+```html
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180-precomposed.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152-precomposed.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144-precomposed.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon" href="apple-touch-icon-precomposed.png">
+<link rel="shortcut icon" href="favicon.png">
+<link rel="icon" type="image/ico" href="favicon.ico">
 ```
 
-### HAML
+### Haml
 
-``` haml
-%link{ rel: "apple-touch-icon", sizes: "180x180", href: "apple-touch-icon-180x180-precomposed.png" }
-%link{ rel: "apple-touch-icon", sizes: "152x152", href: "apple-touch-icon-152x152-precomposed.png" }
-%link{ rel: "apple-touch-icon", sizes: "144x144", href: "apple-touch-icon-144x144-precomposed.png" }
-%link{ rel: "apple-touch-icon", sizes: "114x114", href: "apple-touch-icon-114x114-precomposed.png" }
-%link{ rel: "apple-touch-icon", sizes: "72x72", href: "apple-touch-icon-72x72-precomposed.png" }
-%link{ rel: "apple-touch-icon", href: "apple-touch-icon-precomposed.png" }
-%link{ rel: "shortcut icon", href: "favicon.png" }
-%link{ rel: "icon", type: "image/ico", href: "favicon.ico" }
+```haml
+%link{rel: "apple-touch-icon", sizes: "180x180", href: "apple-touch-icon-180x180-precomposed.png"}
+%link{rel: "apple-touch-icon", sizes: "152x152", href: "apple-touch-icon-152x152-precomposed.png"}
+%link{rel: "apple-touch-icon", sizes: "144x144", href: "apple-touch-icon-144x144-precomposed.png"}
+%link{rel: "apple-touch-icon", sizes: "114x114", href: "apple-touch-icon-114x114-precomposed.png"}
+%link{rel: "apple-touch-icon", sizes: "72x72", href: "apple-touch-icon-72x72-precomposed.png"}
+%link{rel: "apple-touch-icon", href: "apple-touch-icon-precomposed.png"}
+%link{rel: "shortcut icon", href: "favicon.png"}
+%link{rel: "icon", type: "image/ico", href: "favicon.ico"}
 ```
 
 ### Slim
+
 ```slim
-link href="apple-touch-icon-180x180-precomposed.png" rel="apple-touch-icon-precomposed" sizes="180x180" /
-link href="apple-touch-icon-152x152-precomposed.png" rel="apple-touch-icon-precomposed" sizes="152x152" /
-link href="apple-touch-icon-144x144-precomposed.png" rel="apple-touch-icon-precomposed" sizes="144x144" /
-link href="apple-touch-icon-114x114-precomposed.png" rel="apple-touch-icon-precomposed" sizes="114x114" /
-link href="apple-touch-icon-72x72-precomposed.png" rel="apple-touch-icon-precomposed" sizes="72x72" /
-link href="apple-touch-icon-precomposed.png" rel="apple-touch-icon-precomposed" /
+link href="apple-touch-icon-180x180-precomposed.png" rel="apple-touch-icon" sizes="180x180" /
+link href="apple-touch-icon-152x152-precomposed.png" rel="apple-touch-icon" sizes="152x152" /
+link href="apple-touch-icon-144x144-precomposed.png" rel="apple-touch-icon" sizes="144x144" /
+link href="apple-touch-icon-114x114-precomposed.png" rel="apple-touch-icon" sizes="114x114" /
+link href="apple-touch-icon-72x72-precomposed.png" rel="apple-touch-icon" sizes="72x72" /
+link href="apple-touch-icon-precomposed.png" rel="apple-touch-icon" /
 link href="favicon.png" rel=("shortcut icon") /
 link href="favicon.ico" rel="icon" type="image/ico" /
 ```
 
 ## Contributing
+
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
