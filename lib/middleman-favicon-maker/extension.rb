@@ -51,7 +51,7 @@ module Middleman
             ::Middleman::Sitemap::Resource.new(
               app.sitemap,
               item[:icon],
-              File.join(options[:template_dir], src)
+              File.join(app.root, options[:template_dir], src)
             )
           end
         end
