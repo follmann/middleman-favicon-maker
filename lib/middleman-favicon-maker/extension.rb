@@ -61,11 +61,11 @@ module Middleman
       private
 
       def source_path
-        File.join(app.root, app.config.source)
+        File.join(app.config.source)
       end
 
       def build_path
-        File.join(app.root, app.config.build_dir)
+        File.join(app.config.build_dir)
       end
     end
   end
