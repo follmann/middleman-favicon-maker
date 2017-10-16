@@ -18,7 +18,7 @@ brew install imagemagick
 ### Using Bundler
 
 ```ruby
-gem "middleman-favicon-maker", "~> 4.0"
+gem "middleman-favicon-maker", "~> 4.1"
 ```
 
 If you're using Middleman version 2.x, use version 0.0.6 of middleman-favicon-maker.
