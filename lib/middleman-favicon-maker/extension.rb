@@ -10,13 +10,11 @@ module Middleman
       option :icons,        {},  "Hash with template filename (key) and Array of Hashes with icon configs"
 
       def after_configuration
-        options[:template_dir] ||= source_path
-        options[:output_dir]   ||= build_path
+        options[:template_dir] ||= app.config.source
+        options[:output_dir]   ||= app.config.build_dir
       end
 
       def after_build(builder)
-
-        template_files = []
         ::FaviconMaker.generate do
           setup do
             template_dir  options[:template_dir]
@@ -31,18 +29,10 @@ module Middleman
             end
           end
 
-          each_icon do |filepath, template_filepath|
-            pathname = Pathname.new(filepath)
-            rel_path =
-              if pathname.absolute?
-                pathname.relative_path_from(Pathname.new(app.root)).to_s
-              else
-                filepath
-              end
-            builder.trigger(:created, rel_path)
+          each_icon do |filepath, _template_filepath|
+            builder.trigger(:created, relative_path_to_root(filepath))
           end
         end
-
       end
 
       def manipulate_resource_list(resources)
@@ -51,7 +41,7 @@ module Middleman
             ::Middleman::Sitemap::Resource.new(
               app.sitemap,
               item[:icon],
-              File.join(app.root, options[:template_dir], src)
+              File.join(app.root, relative_path_to_root(options[:template_dir]), src)
             )
           end
         end
@@ -60,12 +50,13 @@ module Middleman
 
       private
 
-      def source_path
-        File.join(app.root, app.config.source)
-      end
-
-      def build_path
-        File.join(app.root, app.config.build_dir)
+      def relative_path_to_root(filepath)
+        pathname = Pathname.new(filepath)
+        if pathname.absolute?
+          pathname.relative_path_from(Pathname.new(app.root)).to_s
+        else
+          filepath
+        end
       end
     end
   end
