@@ -1,7 +1,7 @@
 # middleman-favicon-maker
 
 [![Gem Version](https://badge.fury.io/rb/middleman-favicon-maker.svg)](http://badge.fury.io/rb/middleman-favicon-maker)
-[![Code Climate](https://codeclimate.com/github/follmann/middleman-favicon-maker.png)](https://codeclimate.com/github/follmann/middleman-favicon-maker)
+[![Code Climate](https://codeclimate.com/github/follmann/middleman-favicon-maker.svg)](https://codeclimate.com/github/follmann/middleman-favicon-maker)
 
 [FaviconMaker](https://github.com/follmann/favicon_maker) is a gem which generates favicon files in various sizes from a base image. This gem integrates FaviconMaker effortlessly into your [Middleman](https://github.com/middleman/middleman) project.
 
