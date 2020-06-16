@@ -19,6 +19,6 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   # Additional dependencies
-  gem.add_runtime_dependency 'middleman-core', '>=- 4.0'
+  gem.add_runtime_dependency 'middleman-core', '>= 4.0'
   gem.add_runtime_dependency 'favicon_maker', '~> 1.3', '>= 1.3.1'
 end
